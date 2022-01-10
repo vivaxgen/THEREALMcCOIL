@@ -45,7 +45,7 @@ McCOIL_categorical = function(data, maxCOI=25, threshold_ind=20, threshold_site=
 	} else { stop(paste("Sample size is too small (n=", n, ", k=", k,").", sep=""))}
 
 	##summarize results
-	outputMCMC1 = read.table(paste(path, "/", output, sep=""), head=F)
+	outputMCMC1 = read.table(output, head=F)
 	meanM= as.numeric(round(apply(outputMCMC1[(burnin+1): totalrun, (1:n)+1], 2, mean)))
 	meanP= as.numeric(apply(outputMCMC1[(burnin+1): totalrun, ((1:k)+n+1)], 2, mean))
 	medianM= as.numeric(apply(outputMCMC1[(burnin+1): totalrun, (1:n)+1], 2, median))
@@ -80,7 +80,7 @@ McCOIL_categorical = function(data, maxCOI=25, threshold_ind=20, threshold_site=
 							c(medianM, medianP, median_e1, median_e2), round(c(sdM, sdP, sd_e1, sd_e2),digits=5), c(M025, P025, e1_025, e2_025), c(M975, P975, e1_975, e2_975)))
 	}
 	colnames(output_sum)=  c("file", "CorP","name", "mean","median","sd", "quantile0.025", "quantile0.975")
-	write.table(output_sum, paste(path, "/", output, "_summary.txt", sep=""), sep="\t", col.names=T, row.names=F, quote=F)
+	write.table(output_sum, paste(output, "_summary.txt", sep=""), sep="\t", col.names=T, row.names=F, quote=F)
 
 }
 

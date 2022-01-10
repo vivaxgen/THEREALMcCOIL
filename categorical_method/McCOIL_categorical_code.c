@@ -51,9 +51,9 @@ void McCOIL_categorical(int *max, int *iterations, int *n0, int *k0, double *sam
 	t1 = time(NULL); // time 1
 	
 	////output////
-	char var_file[1000];
-	sprintf(var_file, "%s/%s", path[0], file_index[0]); 
-	FILE *V0 = fopen(var_file, "w");
+	// char var_file[1000];
+	//sprintf(var_file, "%s/%s", path[0], file_index[0]); 
+	FILE *V0 = fopen(*file_index, "w");
 
 	////MCMC////
 	
